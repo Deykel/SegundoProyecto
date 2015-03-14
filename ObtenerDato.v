@@ -35,17 +35,18 @@ end
 
 // registro de estados
 
-		
-always @(posedge clk) 
+	
+always @(ready, reset,est_sig) 
+	begin
 	if(reset)
 	begin
 		estado=1'b0;
 	end	
 	else
 		estado=est_sig;
-		
+	end
 // nueva	
-always@(ready)
+always@(posedge clk)
 	begin 
 	   datos=datain;
 		est_sig=estado;
