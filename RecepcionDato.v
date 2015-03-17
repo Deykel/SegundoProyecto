@@ -23,12 +23,12 @@ input wire ps2d, ps2c, rx_en,
 output wire [7:0] dataout 
     ); 
 	  
-wire s; 
+wire s,s1; 
 wire [7:0] data;  
 
 
 ps2_rx mod0(.clk(clk),.reset(reset),.ps2d(ps2d), .ps2c(ps2c), .rx_en(rx_en), .rx_done_tick(s),.dout(data));
 ObtenerDato mod1( .ready(s), .clk(clk),.reset(reset), .datain(data), .dataout(dataout));
-
+//Registro_3 mod2 (.enable(s1) ,.dd(data) ,.qq(dataout));
 
 endmodule

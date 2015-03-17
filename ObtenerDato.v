@@ -22,7 +22,7 @@ module ObtenerDato( input wire ready, clk,reset, input wire [7:0] datain, output
 
 //declaración de señales 	 
 reg [1:0] estado, est_sig;
-wire [7:0] datos;
+reg [7:0] datos;
 
 //inicialización
  
@@ -30,27 +30,30 @@ wire [7:0] datos;
 always @(posedge clk,posedge reset) 
 	begin
 	if(reset)
-		estado=1'b0;
+		estado=2'b00;
 		
 	else
 		estado=est_sig;
 		
 	end
 	
-	
-	
+	initial begin 
+		dataout=8'h00;
+		
+		end
 
 
 always@*
 	begin 
 		
 		est_sig=estado; 
-		
+		datos=datain;
 
 	case(estado)
 	2'b00: 
 	begin
 		if (ready) begin
+			
 			est_sig=2'b01; end 
 		else begin
 			est_sig=estado;end 
@@ -68,7 +71,7 @@ always@*
 	begin
 		if (ready) 
 			begin
-			est_sig=2'b11;
+			est_sig=2'b00;
 			dataout=datos;
 				
 			end
@@ -76,7 +79,8 @@ always@*
 			est_sig=2'b10; end		
 	end
 	
-	2'b11:begin est_sig=2'b00; end
+	2'b11:begin 
+	 est_sig=2'b00; end
 	
 		
 
@@ -85,5 +89,5 @@ always@*
 endcase
 
 end
-assign datos=datain;
+	
 endmodule
