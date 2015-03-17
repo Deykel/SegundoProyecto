@@ -18,12 +18,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Validacion(input wire ready,input wire [7:0] datain, output reg valido
+module Validacion(input wire [7:0] datain, output reg valido
     );
 
 
 
-always@(ready,datain)
+always@(datain)
 	begin
 		
 		

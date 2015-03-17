@@ -18,7 +18,6 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-//Modulo tomado del libro PONG P.CHU
 module ps2_rx(
 input wire clk, reset,
 input wire ps2d, ps2c, rx_en,
