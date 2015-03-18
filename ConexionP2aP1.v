@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module ConexionP2aP1(input wire clk, reset, iniciarr, validoo, terminarr, 
+module ConexionP2aP1(input wire clk, reset,validat,validap,validab, iniciar,terminar, 
 input wire [4:0] dd ,
 output  [4:0] qq,
 input wire d,d1,
@@ -30,8 +30,12 @@ wire [3:0] s;
 wire [1:0] w;
 wire [4:0] x;
 
-FSM1 mod0(.clk(clk), .reset(reset), .iniciarr(iniciarr), .validoo(validoo), .terminarr(terminarr),.pasar1(s[0]),
- .pasar2(s[1]), .pasar3(s[2]), .listo(s[3]));
+
+FSM1 maquina0(.clk(clk),.reset(reset), .validat(validat),.validap(validap),.validab(validab),.iniciar(iniciar),.terminar(terminar),/*iniciarr, validoo, terminarr,*/ 
+.pasar1(s[0]), .pasar2(s[1]), .pasar3(s[2]), .listo(s[3])
+
+    );
+
 
 // primeros registros 
 Registro_2 mod1(.clk(clk), .reset(reset) ,.en(s[0]) ,.dd(dd) ,.qq(x));
